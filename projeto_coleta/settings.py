@@ -39,13 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.postgres',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'django_extensions',
     'djoser',
     'drf_yasg',
     'guardian',
-    'core',
     'rest_framework',
     'rest_framework.authtoken',
+    'core',
 ]
 
 # Application definition
@@ -101,12 +102,12 @@ WSGI_APPLICATION = 'projeto_coleta.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'psqlextra.backend',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'projeto_coleta_staging',
         'USER': os.getenv('POSTGRES_USER', 'ygor_projeto_coleta'),
         'PASSWORD': os.getenv('POSTGRES_PASSW', 'ygor_projeto_coleta'),
         'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
-        'PORT': '5432',
+        'PORT': '5433',
     },
 }
 
