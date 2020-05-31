@@ -14,7 +14,6 @@ from django.contrib.postgres.fields import JSONField
 from django.contrib.gis.geos import Point
 from django.db import models
 from django.contrib.gis.db import models as _models
-from psqlextra.models import PostgresModel
 
 
 # class Product(PostgresModel):
