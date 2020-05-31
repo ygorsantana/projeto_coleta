@@ -13,9 +13,9 @@ if os.name == 'nt':
     os.environ['GDAL_DATA'] = OSGEO4W + r"\share\gdal"
     os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
     os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'projeto_coleta.settings')
 
 def main():
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'projeto_coleta.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
