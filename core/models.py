@@ -300,6 +300,7 @@ from django.contrib.gis.db import models as _models
 class EnderecoAbstrato(models.Model):
     endereco_apelido = models.CharField(
         max_length=120,
+        null=True,
     )
     cep = models.CharField(
         max_length=20,
@@ -322,7 +323,8 @@ class EnderecoAbstrato(models.Model):
         null=True,
     )
     localizacao_geografica = _models.PointField(
-        help_text="Pontos de Latitude e Longitude"
+        help_text="Pontos de Latitude e Longitude",
+        null=True,
     )
 
     class Meta:
@@ -357,6 +359,7 @@ class Pessoa(EnderecoAbstrato):
     pontuacao = models.DecimalField(
         max_digits=10,
         decimal_places=2,
+        default=0,
     )
 
 

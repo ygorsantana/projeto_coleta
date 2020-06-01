@@ -22,8 +22,8 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 # from core.views import SkuViewSet, ProductViewSet, StoreViewSet
-from account.views import UserViewSet
-from core.views import PessoaViewSet
+# from account.views import UserViewSet
+from core.views import PessoaViewSet, HomeDataRetrieveAPIView
 
 
 schema_view = get_schema_view(
@@ -48,7 +48,7 @@ router: DefaultRouter = DefaultRouter()
 # router.register(r'skus', SkuViewSet, basename='sku')
 # router.register(r'stores', StoreViewSet, basename='store')
 router.register(r'pessoas', PessoaViewSet, basename='pessoa')
-router.register(r'users', UserViewSet, basename='user')
+# router.register(r'users', UserViewSet, basename='user')
 
 urlpatterns = [
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
@@ -56,5 +56,6 @@ urlpatterns = [
     re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
-    path(r'auth/', include('djoser.urls.authtoken'))
+    path(r'auth/', include('djoser.urls.authtoken')),
+    path('home-data/', HomeDataRetrieveAPIView.as_view()),
 ] + router.urls

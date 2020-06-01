@@ -1,10 +1,10 @@
 from django.shortcuts import render
 
 # Create your views here.
-from rest_framework import viewsets
+from rest_framework import generics, viewsets
 
 from core.models import Pessoa
-from core.serializers import PessoaSerializer
+from core.serializers import PessoaSerializer, HomeListSerializer
 # from core.models import Product, Sku, Store
 # from core.serializers import ProductSerializer, SkuSerializer, StoreSerializer, ShoppingSerializer
 
@@ -40,3 +40,11 @@ from core.serializers import PessoaSerializer
 class PessoaViewSet(viewsets.ModelViewSet):
     serializer_class = PessoaSerializer
     queryset = Pessoa.objects.all()
+
+
+class HomeDataRetrieveAPIView(generics.RetrieveAPIView):
+    serializer_class = HomeListSerializer
+    pagination_class = None
+
+    def get_object(self):
+        return Pessoa.objects.get(usuario=self.request.user)

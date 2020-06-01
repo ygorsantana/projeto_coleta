@@ -36,3 +36,11 @@ class PessoaSerializer(serializers.ModelSerializer):
         model = Pessoa
         fields = '__all__'
         depth = 1
+
+
+class HomeListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pessoa
+        fields = [
+            'pontuacao'
+        ]
